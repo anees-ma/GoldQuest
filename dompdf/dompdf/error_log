@@ -1,0 +1,4 @@
+[06-Apr-2020 13:43:08 UTC] PHP Fatal error:  Uncaught Error: Class 'Dompdf\DOMPDF' not found in /home/farmocart/public_html/newp/dompdf/dompdf/downloadpdf.php:37
+Stack trace:
+#0 {main}
+  thrown in /home/farmocart/public_html/newp/dompdf/dompdf/downloadpdf.php on line 37
