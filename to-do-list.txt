@@ -1,0 +1,28 @@
+GQG Ref i dshoud remove - done
+ALl(completed, insuff, wip) should come in client portal also - done
+Replace GQG- ref id with application id in final rport - done
+Custom client logo and footer address in report - done
+
+Add 1 more proffessional reference, rename CRIMINAL-COURT-RECORD to COURT-RECORD(PERM) and add COURT-RECORD(CURR)
+
+Rename service name CRIMINAL-POLICE-RECORD to POLICE VERBAL
+
+Rename CREDIT-VERIFICATION to CREDIT/CIBIL VERIFICATION
+
+RENAME EMP-* to EX-EMP-*
+
+Rename INSTA-DRUG-TEST to INSTA-DRUG TEST
+
+Add camel case  for selected id second column  in customer index page - done
+
+Mail to candidate after application generation by client not working
+
+Unblock client not working
+
+Client dropbox edit entries not working
+
+On adding
+##10th std,education graduation, eHr3,ehr1
+
+On updating
+criminal database, EHR 2

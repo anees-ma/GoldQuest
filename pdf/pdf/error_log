@@ -1,0 +1,10 @@
+[09-Apr-2020 13:38:47 UTC] PHP Warning:  "continue" targeting switch is equivalent to "break". Did you mean to use "continue 2"? in /home/farmocart/public_html/newp/pdf/pdf/TCPDF/tcpdf.php on line 17784
+[09-Apr-2020 13:38:47 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function mysql_connect() in /home/farmocart/public_html/newp/pdf/pdf/index.php:37
+Stack trace:
+#0 {main}
+  thrown in /home/farmocart/public_html/newp/pdf/pdf/index.php on line 37
+[09-Apr-2020 14:34:43 UTC] PHP Warning:  "continue" targeting switch is equivalent to "break". Did you mean to use "continue 2"? in /home/farmocart/public_html/newp/pdf/pdf/TCPDF/tcpdf.php on line 17784
+[09-Apr-2020 14:34:43 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function mysql_connect() in /home/farmocart/public_html/newp/pdf/pdf/index.php:37
+Stack trace:
+#0 {main}
+  thrown in /home/farmocart/public_html/newp/pdf/pdf/index.php on line 37

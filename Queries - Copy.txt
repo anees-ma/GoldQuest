@@ -1,0 +1,87 @@
+UPDATE `service_names` SET `display_name` = 'ACADEMIC REFERENCE' WHERE `service_names`.`id` = 3;
+UPDATE `service_names` SET `display_name` = 'CREDIT/CIBIL CHECK' WHERE `service_names`.`id` = 9;
+UPDATE `service_names` SET `service_name` = 'national-id-check-1', `display_name` = 'national id check 1' WHERE `service_names`.`id` = 8;
+INSERT INTO `service_names` (`id`, `service_name`, `display_name`) VALUES (NULL, 'national-id-check-2', 'national id check 2');
+ALTER TABLE `applications` CHANGE `national_id_check` `national_id_check_1` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL;
+
+ALTER TABLE `applications` ADD `national_id_check_2` TEXT NOT NULL AFTER `national_id_check_1`;
+UPDATE `bck_verification` SET `service_name` = 'national-id-check-1' WHERE `bck_verification`.`id` = 48;
+INSERT INTO `bck_verification` (`id`, `service_name`, `appl_details`, `appl_shrt`, `report_details`, `report_shrt`) VALUES (NULL, 'national-id-check-2', 'type of id card,idendity number,date of verification,verificaton result,verified by,', 'nttyid2,ntidcrd2,ntdovery2,ntvrresul2,ntverby2,', 'type of id card,idendity number,date of verification,verificaton result,verified by,', 'nttyid2_2,ntidcrd2_2,ntdovery2_2,ntvrresul2_2,ntverby2_2,'), (NULL, '', '', '', '', '');
+
+UPDATE `serv_list` SET `subservice_name` = 'national-id-check-1,national-id-check-2,', `display_name` = 'national-id-check-1,national-id-check-2,' WHERE `serv_list`.`id` = 48;
+ALTER TABLE national_id_check RENAME TO national_id_check_1;
+
+-- phpMyAdmin SQL Dump
+-- version 5.1.0
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: May 29, 2021 at 01:08 PM
+-- Server version: 10.4.18-MariaDB
+-- PHP Version: 7.4.16
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+--
+-- Database: `goldquest`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `national_id_check_2`
+--
+
+CREATE TABLE `national_id_check_2` (
+  `id` int(11) NOT NULL,
+  `appl_id` text NOT NULL,
+  `client_uid` text NOT NULL,
+  `add_fe` text NOT NULL,
+  `nttyid2` text NOT NULL,
+  `ntidcrd2` text NOT NULL,
+  `ntdovery2` text NOT NULL,
+  `ntvrresul2` text NOT NULL,
+  `ntverby2` text NOT NULL,
+  `nttyid2_2` text NOT NULL,
+  `ntidcrd2_2` text NOT NULL,
+  `ntdovery2_2` text NOT NULL,
+  `ntvrresul2_2` text NOT NULL,
+  `ntverby2_2` text NOT NULL,
+  `remarks` text NOT NULL,
+  `report` text NOT NULL,
+  `source` text NOT NULL,
+  `location` text NOT NULL,
+  `cmpl_date` text NOT NULL,
+  `color_code` text NOT NULL,
+  `date` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `national_id_check_2`
+--
+ALTER TABLE `national_id_check_2`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `national_id_check_2`
+--
+ALTER TABLE `national_id_check_2`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+COMMIT;
+
+
+ALTER TABLE `national_id_check_2` CHANGE `nttyid` `nttyid2` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL, CHANGE `ntidcrd` `ntidcrd2` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL, CHANGE `ntdovery` `ntdovery2` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL, CHANGE `ntvrresul` `ntvrresul2` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL, CHANGE `ntverby` `ntverby2` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL, CHANGE `nttyid2` `nttyid2_2` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL, CHANGE `ntidcrd2` `ntidcrd2_2` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL, CHANGE `ntdovery2` `ntdovery2_2` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL, CHANGE `ntvrresul2` `ntvrresul2_2` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL, CHANGE `ntverby2` `ntverby2_2` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL;
+
+UPDATE `display_names` SET `service_name` = 'national-id-check-1', `orig_serv` = 'National ID Check 1', `subservice_name` = 'National ID Check 1,', `real_sub` = 'national_id_check_1,', `inv_code` = 'NID1' WHERE `display_names`.`id` = 48;
+
+INSERT INTO `display_names` (`id`, `serv_oid`, `service_name`, `orig_serv`, `subservice_name`, `display_names`, `real_sub`, `inv_code`) VALUES (NULL, '48', 'national-id-check-2', 'National ID Check 2', 'National ID Check 2,', NULL, 'national_id_check_2,', 'NID2');

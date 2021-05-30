@@ -1,0 +1,631 @@
+ALTER TABLE `applic_entry` CHANGE `case_rv_dt` `case_rv_dt` DATE NOT NULL, CHANGE `cse_intidt` `cse_intidt` DATE NOT NULL;
+
+ALTER TABLE `applications`  ADD `insufficiency_doc_att` TEXT NOT NULL  AFTER `docs`;
+
+UPDATE `serv_list` SET `subservice_name` = 'emp-hr-1,emp-hr-2,emp-hr-3,emp-hr-4,emp-hr-5,emp-hr-6,' WHERE `serv_list`.`id` = 41;
+
+ALTER TABLE `applications` ADD `services` JSON NULL DEFAULT NULL AFTER `permanent_address`;
+
+ALTER TABLE `applications` ADD `ug_stream` VARCHAR(10) NULL DEFAULT NULL AFTER `company_site_visit`, ADD `pg_stream` VARCHAR(10) NULL DEFAULT NULL AFTER `ug_stream`;
+
+ALTER TABLE `applications` DROP `emp_hr_7`, DROP `emp_hr_8`;
+
+##############################################Need to add candidate_application######################################
+
+ALTER TABLE `applications` ADD `7_panel` TEXT NOT NULL AFTER `6_panel`;
+
+ALTER TABLE `applications` ADD `8_panel` TEXT NOT NULL AFTER `7_panel`;
+
+ALTER TABLE `applications` ADD `9_panel` TEXT NOT NULL AFTER `8_panel`;
+
+ALTER TABLE `applications` ADD `11_panel` TEXT NOT NULL AFTER `10_panel`;
+
+INSERT INTO `bck_verification` (`id`, `service_name`, `appl_details`, `appl_shrt`, `report_details`, `report_shrt`) VALUES (NULL, '7-panel', 'name of the candidate,type of test,drug kit type,reason for test,test result,specimen ID,1.Cocaine,2.Opiates,3.Propoxyphene,4.Marijuana,5.Amphetamines,6.Benzodiazepines,', 'nmcdisev,totstsev,dktpesev,rsnftstsev,tstressev,spcidsev,cocainesev,opiatessev,propoxyphenesev,marijuanasev,amphetaminessev,benzodiazepinessev,', 'name of the candidate,type of test,drug kit type,reason for test,test result,specimen ID,7.Methadone,8.Phencyclidine,9.Methamphetamine,10.Oxycodone,11.Barbiturates,12.Cannabinoids,', 'nmcdisev2,totstsev2,dktpesev2,rsnftstsev2,tstressev2,spcidsev2,cocainesev2,opiatessev2,propoxyphenesev2,marijuanasev2,amphetaminessev2,benzodiazepinessev2,'), (NULL, '8-panel', 'name of the candidate,type of test,drug kit type,reason for test,test result,specimen ID,1.Cocaine,2.Opiates,3.Propoxyphene,4.Marijuana,5.Amphetamines,6.Benzodiazepines,', 'nmcdieig,totsteig,dktpeeig,rsnftsteig,tstreseig,spcideig,cocaineeig,opiateseig,propoxypheneeig,marijuanaeig,amphetamineseig,benzodiazepineseig,', 'name of the candidate,type of test,drug kit type,reason for test,test result,specimen ID,7.Methadone,8.Phencyclidine,9.Methamphetamine,10.Oxycodone,11.Barbiturates,12.Cannabinoids,', 'nmcdieig2,totsteig2,dktpeeig2,rsnftsteig2,tstreseig2,spcideig2,cocaineeig2,opiateseig2,propoxypheneeig2,marijuanaeig2,amphetamineseig2,benzodiazepineseig2,');
+
+INSERT INTO `bck_verification` (`id`, `service_name`, `appl_details`, `appl_shrt`, `report_details`, `report_shrt`) VALUES (NULL, '9-panel', 'name of the candidate,type of test,drug kit type,reason for test,test result,specimen ID,1.Cocaine,2.Opiates,3.Propoxyphene,4.Marijuana,5.Amphetamines,6.Benzodiazepines,', 'nmcdinin,totstnin,dktpenin,rsnftstnin,tstresnin,spcidnin,cocainenin,opiatesnin,propoxyphenenin,marijuananin,amphetaminesnin,benzodiazepinesnin,', 'name of the candidate,type of test,drug kit type,reason for test,test result,specimen ID,7.Methadone,8.Phencyclidine,9.Methamphetamine,10.Oxycodone,11.Barbiturates,12.Cannabinoids,', 'nmcdinin2,totstnin2,dktpenin2,rsnftstnin2,tstresnin2,spcidnin2,cocainenin2,opiatesnin2,propoxyphenenin2,marijuananin2,amphetaminesnin2,benzodiazepinesnin2,'), (NULL, '11-panel', 'name of the candidate,type of test,drug kit type,reason for test,test result,specimen ID,1.Cocaine,2.Opiates,3.Propoxyphene,4.Marijuana,5.Amphetamines,6.Benzodiazepines,', 'nmcdielev,totstelev,dktpeelev,rsnftstelev,tstreselev,spcidelev,cocaineelev,opiateselev,propoxypheneelev,marijuanaelev,amphetamineselev,benzodiazepineselev,', 'name of the candidate,type of test,drug kit type,reason for test,test result,specimen ID,7.Methadone,8.Phencyclidine,9.Methamphetamine,10.Oxycodone,11.Barbiturates,12.Cannabinoids,', 'nmcdielev2,totstelev2,dktpeelev2,rsnftstelev2,tstreselev2,spcidelev2,cocaineelev2,opiateselev2,propoxypheneelev2,marijuanaelev2,amphetamineselev2,benzodiazepineselev2,');
+
+
+####################################################################################################################################################################Copy 5-panel table to create 7-panel, 8-panel, 9-panel, 11-panel, insta_drug_test#################################################################################################################################
+
+
+
+ALTER TABLE `7_panel` CHANGE `nmcdi` `nmcdisev` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL, CHANGE `totst` `totstsev` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL, CHANGE `dktpe` `dktpesev` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL, CHANGE `rsnftst` `rsnftstsev` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL, CHANGE `tstres` `tstressev` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL, CHANGE `spcid` `spcidsev` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL, CHANGE `cocaine` `cocainesev` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL, CHANGE `opiates` `opiatessev` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL, CHANGE `propoxyphene` `propoxyphenesev` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL, CHANGE `marijuana` `marijuanasev` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL, CHANGE `amphetamines` `amphetaminessev` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL, CHANGE `benzodiazepines` `benzodiazepinessev` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL, CHANGE `nmcdi2` `nmcdisev2` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL, CHANGE `totst2` `totstsev2` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL, CHANGE `dktpe2` `dktpesev2` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL, CHANGE `rsnftst2` `rsnftstsev2` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL, CHANGE `tstres2` `tstressev2` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL, CHANGE `spcid2` `spcidsev2` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL, CHANGE `methadone` `methadonesev` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL, CHANGE `phencyclidine` `phencyclidinesev` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL, CHANGE `methamphetamine` `methamphetaminesev` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL, CHANGE `oxycodone` `oxycodonesev` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL, CHANGE `barbiturates` `barbituratessev` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL, CHANGE `cannabinoids` `cannabinoidssev` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL;
+
+ALTER TABLE `8_panel` CHANGE `nmcdi` `nmcdieig` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL, CHANGE `totst` `totsteig` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL, CHANGE `dktpe` `dktpeeig` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL, CHANGE `rsnftst` `rsnftsteig` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL, CHANGE `tstres` `tstreseig` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL, CHANGE `spcid` `spcideig` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL, CHANGE `cocaine` `cocaineeig` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL, CHANGE `opiates` `opiateseig` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL, CHANGE `propoxyphene` `propoxypheneeig` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL, CHANGE `marijuana` `marijuanaeig` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL, CHANGE `amphetamines` `amphetamineseig` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL, CHANGE `benzodiazepines` `benzodiazepineseig` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL, CHANGE `nmcdi2` `nmcdieig2` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL, CHANGE `totst2` `totsteig2` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL, CHANGE `dktpe2` `dktpeeig2` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL, CHANGE `rsnftst2` `rsnftst2eig` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL, CHANGE `tstres2` `tstreseig2` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL, CHANGE `spcid2` `spcideig2` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL, CHANGE `methadone` `methadoneeig` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL, CHANGE `phencyclidine` `phencyclidineeig` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL, CHANGE `methamphetamine` `methamphetamineeig` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL, CHANGE `oxycodone` `oxycodoneeig` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL, CHANGE `barbiturates` `barbiturateseig` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL, CHANGE `cannabinoids` `cannabinoidseig` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL;
+
+ALTER TABLE `9_panel` CHANGE `nmcdi` `nmcdinin` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL, CHANGE `totst` `totstnin` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL, CHANGE `dktpe` `dktpenin` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL, CHANGE `rsnftst` `rsnftstnin` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL, CHANGE `tstres` `tstresnin` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL, CHANGE `spcid` `spcidnin` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL, CHANGE `cocaine` `cocainenin` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL, CHANGE `opiates` `opiatesnin` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL, CHANGE `propoxyphene` `propoxyphenenin` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL, CHANGE `marijuana` `marijuananin` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL, CHANGE `amphetamines` `amphetaminesnin` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL, CHANGE `benzodiazepines` `benzodiazepinesnin` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL, CHANGE `nmcdi2` `nmcdinin2` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL, CHANGE `totst2` `totstnin2` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL, CHANGE `dktpe2` `dktpenin2` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL, CHANGE `rsnftst2` `rsnftstnin2` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL, CHANGE `tstres2` `tstresnin2` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL, CHANGE `spcid2` `spcidnin2` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL, CHANGE `methadone` `methadonenin` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL, CHANGE `phencyclidine` `phencyclidinenin` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL, CHANGE `methamphetamine` `methamphetaminenin` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL, CHANGE `oxycodone` `oxycodonenin` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL, CHANGE `barbiturates` `barbituratesnin` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL, CHANGE `cannabinoids` `cannabinoidsnin` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL;
+
+ALTER TABLE `11_panel` CHANGE `nmcdi` `nmcdielev` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL, CHANGE `totst` `totstelev` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL, CHANGE `dktpe` `dktpeelev` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL, CHANGE `rsnftst` `rsnftstelev` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL, CHANGE `tstres` `tstreselev` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL, CHANGE `spcid` `spcidelev` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL, CHANGE `cocaine` `cocaineelev` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL, CHANGE `opiates` `opiateselev` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL, CHANGE `propoxyphene` `propoxypheneelev` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL, CHANGE `marijuana` `marijuanaelev` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL, CHANGE `amphetamines` `amphetamineselev` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL, CHANGE `benzodiazepines` `benzodiazepineselev` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL, CHANGE `nmcdi2` `nmcdielev2` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL, CHANGE `totst2` `totstelev2` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL, CHANGE `dktpe2` `dktpeelev2` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL, CHANGE `rsnftst2` `rsnftstelev2` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL, CHANGE `tstres2` `tstreselev2` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL, CHANGE `spcid2` `spcidelev2` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL, CHANGE `methadone` `methadoneelev` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL, CHANGE `phencyclidine` `phencyclidineelev` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL, CHANGE `methamphetamine` `methamphetamineelev` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL, CHANGE `oxycodone` `oxycodoneelev` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL, CHANGE `barbiturates` `barbiturateselev` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL, CHANGE `cannabinoids` `cannabinoidselev` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL;
+
+
+
+UPDATE `serv_list` SET `subservice_name` = 'insta-drug-test' WHERE `serv_list`.`id` = 43;
+
+UPDATE `display_names` SET `service_name` = 'insta-drug-test' WHERE `display_names`.`id` = 43;
+
+UPDATE `display_names` SET `orig_serv` = 'Insta Drug Test', `subservice_name` = 'insta-drug-test', `real_sub` = 'insta-drug-test', `inv_code` = 'IDT' WHERE `display_names`.`id` = 43;
+
+
+
+#####################################################################################################Delete drug other drug panels from display_names###################################################
+
+ALTER TABLE `applications` ADD `insta_drug_test` TEXT NOT NULL AFTER `pro_reference_2`;
+
+
+INSERT INTO `bck_verification` (`id`, `service_name`, `appl_details`, `appl_shrt`, `report_details`, `report_shrt`) VALUES (NULL, 'insta-drug-test', 'name of the candidate,type of test,drug kit type,reason for test,test result,specimen ID,', 'nmcdidg,totstdg,dktpedg,rsnftstdg,tstresdg,spciddg,', 'name of the candidate,type of test,drug kit type,reason for test,test result,specimen ID,', 'nmcdidg2,totstdg2,dktpedg2,rsnftstdg2,tstresdg2,spciddg2,');
+
+ALTER TABLE `applications` CHANGE `insta_drug_test` `insta_drug_panel` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL;
+
+UPDATE `serv_list` SET `subservice_name` = 'insta-drug-test,' WHERE `serv_list`.`id` = 43;
+
+ALTER TABLE `insta_drug_test` CHANGE `benzodiazepines` `benzodiazepinesdg` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL;
+
+
+##Apr 7, 2021##
+delete from applications where client_uid='GQ-MSCT'
+
+
+-----Additional works-----
+12 chars password - done
+Delete only for super admin
+Renaming services and additionals
+
+---Bugs--
+- Incorrect list in Application Management System in client login
+- Login with unique email id in client login
+- Application report list delete functionality
+- Client Login Credentials: poor table design after performing delete in table page 2
+
+
+################----April 28----####################
+
+ALTER TABLE `serv_list` ADD `display_name` TEXT NULL DEFAULT NULL AFTER `subservice_name`;
+
+UPDATE `serv_list` SET `display_name` = 'ex-emp-hr-1,ex-emp-hr-2,ex-emp-hr-3,ex-emp-hr-4,ex-emp-hr-5,ex-emp-hr-6,' WHERE `serv_list`.`id` = 41; UPDATE `serv_list` SET `display_name` = 'permanent-address,current-address,' WHERE `serv_list`.`id` = 40; UPDATE `serv_list` SET `display_name` = 'post-graduation,graduation,12th-std,10th-std,diploma,' WHERE `serv_list`.`id` = 39; UPDATE `serv_list` SET `display_name` = 'pro-reference-1,pro-reference-2,' WHERE `serv_list`.`id` = 42; UPDATE `serv_list` SET `display_name` = 'insta-drug test,' WHERE `serv_list`.`id` = 43; UPDATE `serv_list` SET `display_name` = 'POLICE VERBAL,' WHERE `serv_list`.`id` = 44; UPDATE `serv_list` SET `display_name` = 'COURT-RECORD(PERM),' WHERE `serv_list`.`id` = 45; UPDATE `serv_list` SET `display_name` = 'criminal-database,' WHERE `serv_list`.`id` = 46; UPDATE `serv_list` SET `display_name` = 'CREDIT/CIBIL VERIFICATION,' WHERE `serv_list`.`id` = 47; UPDATE `serv_list` SET `display_name` = 'national-id-check,' WHERE `serv_list`.`id` = 48; UPDATE `serv_list` SET `display_name` = 'company-site-visit,' WHERE `serv_list`.`id` = 49;
+
+
+UPDATE `serv_list` SET `subservice_name` = 'pro-reference-1,pro-reference-2,pro-reference-3,', `display_name` = 'pro-reference-1,pro-reference-2,pro-reference-3,' WHERE `serv_list`.`id` = 42;
+
+UPDATE `serv_list` SET `subservice_name` = 'criminal-court-record,court-record-curr,', `display_name` = 'COURT-RECORD(PERM),COURT-RECORD(CURR),' WHERE `serv_list`.`id` = 45;
+
+-- phpMyAdmin SQL Dump
+-- version 5.0.2
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: Apr 30, 2021 at 05:25 PM
+-- Server version: 10.4.14-MariaDB
+-- PHP Version: 7.2.33
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+--
+-- Database: `goldquest`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `service_names`
+--
+
+CREATE TABLE `service_names` (
+  `id` tinyint(4) UNSIGNED NOT NULL,
+  `service_name` varchar(100) DEFAULT NULL,
+  `display_name` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `service_names`
+--
+
+INSERT INTO `service_names` (`id`, `service_name`, `display_name`) VALUES
+(1, 'emp-hr-1', 'ex-emp-hr-1'),
+(2, 'court-record-curr', 'COURT-RECORD(CURR)'),
+(3, 'pro-reference-3', 'pro-reference-3'),
+(4, 'pro-reference-2', 'pro-reference-2'),
+(5, 'criminal-court-record', 'COURT-RECORD(PERM)'),
+(6, 'pro-reference-1', 'pro-reference-1'),
+(7, 'company-site-visit', 'company-site-visit'),
+(8, 'national-id-check', 'national-id-check'),
+(9, 'credit-verification', 'CREDIT/CIBIL VERIFICATION'),
+(10, 'criminal-database', 'criminal-database'),
+(11, 'criminal-police-record', 'POLICE VERBAL'),
+(12, 'insta-drug-test', 'insta-drug test'),
+(13, 'diploma', 'diploma'),
+(14, '10th-std', '10th-std'),
+(15, '12th-std', '12th-std'),
+(16, 'graduation', 'graduation'),
+(17, 'post-graduation', 'post-graduation'),
+(18, 'current-address', 'current-address'),
+(19, 'permanent-address', 'permanent-address'),
+(20, 'emp-hr-6', 'ex-emp-hr-6'),
+(21, 'emp-hr-5', 'ex-emp-hr-5'),
+(22, 'emp-hr-4', 'ex-emp-hr-4'),
+(23, 'emp-hr-3', 'ex-emp-hr-3'),
+(24, 'emp-hr-2', 'ex-emp-hr-2');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `service_names`
+--
+ALTER TABLE `service_names`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `service_name_2` (`service_name`),
+  ADD KEY `service_name` (`service_name`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `service_names`
+--
+ALTER TABLE `service_names`
+  MODIFY `id` tinyint(4) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+COMMIT;
+
+INSERT INTO `bck_verification` (`id`, `service_name`, `appl_details`, `appl_shrt`, `report_details`, `report_shrt`) VALUES (NULL, 'pro-reference-3', 'reference name,contact details,verified by,association with subject,Applicants strong points,areas to improve,applicants key achievements,', 'rrfnmet,rcndtlst,rvbyt,raswsubt,rapsptt,rarimpt,rapkacht,', 'reference name,contact details,verified by,association with subject,Applicants strong points,areas to improve,applicants key achievements,', 'rrfnmet2,rcndtlst2,rvbyt2,raswsubt2,rapsptt2,rarimpt2,rapkacht2,');
+
+INSERT INTO `bck_verification` (`id`, `service_name`, `appl_details`, `appl_shrt`, `report_details`, `report_shrt`) VALUES (NULL, 'court-record-curr', 'reference number,candidate name,date of birth,father name,address1,', 'crtrefidcr,crtcdnmecr,crtdobcr,crtftnmecr,crtaddrcr,', 'reference number,candidate name,date of birth,father name,address1,', 'crtrefidcr2,crtcdnmecr2,crtdobcr2,crtftnmecr2,crtaddrcr2,');
+
+-- phpMyAdmin SQL Dump
+-- version 5.0.2
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: May 01, 2021 at 01:56 PM
+-- Server version: 10.4.14-MariaDB
+-- PHP Version: 7.2.33
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+--
+-- Database: `goldquest`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pro_reference_3`
+--
+
+CREATE TABLE `pro_reference_3` (
+  `id` int(11) NOT NULL,
+  `appl_id` text NOT NULL,
+  `client_uid` text NOT NULL,
+  `add_fe` text NOT NULL,
+  `rrfnmet` text NOT NULL,
+  `rcndtlst` text NOT NULL,
+  `rvbyt` text NOT NULL,
+  `raswsubt` text NOT NULL,
+  `rapsptt` text NOT NULL,
+  `rarimpt` text NOT NULL,
+  `rapkacht` text NOT NULL,
+  `rrfnmet2` text NOT NULL,
+  `rcndtlst2` text NOT NULL,
+  `rvbyt2` text NOT NULL,
+  `raswsubt2` text NOT NULL,
+  `rapsptt2` text NOT NULL,
+  `rarimpt2` text NOT NULL,
+  `rapkacht2` text NOT NULL,
+  `remarks` text NOT NULL,
+  `report` text NOT NULL,
+  `source` text NOT NULL,
+  `location` text NOT NULL,
+  `cmpl_date` text NOT NULL,
+  `color_code` text NOT NULL,
+  `date` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `pro_reference_3`
+--
+ALTER TABLE `pro_reference_3`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `pro_reference_3`
+--
+ALTER TABLE `pro_reference_3`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+COMMIT;
+
+-- phpMyAdmin SQL Dump
+-- version 5.0.2
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: May 01, 2021 at 02:01 PM
+-- Server version: 10.4.14-MariaDB
+-- PHP Version: 7.2.33
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+--
+-- Database: `goldquest`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `court-record-curr`
+--
+
+CREATE TABLE `court-record-curr` (
+  `id` int(11) NOT NULL,
+  `appl_id` text NOT NULL,
+  `client_uid` text NOT NULL,
+  `add_fe` text NOT NULL,
+  `crtrefidcr` text NOT NULL,
+  `crtcdnmecr` text NOT NULL,
+  `crtdobcr` text NOT NULL,
+  `crtftnmecr` text NOT NULL,
+  `crtaddrcr` text NOT NULL,
+  `crtrefidcr2` text NOT NULL,
+  `crtcdnmecr2` text NOT NULL,
+  `crtdobcr2` text NOT NULL,
+  `crtftnmecr2` text NOT NULL,
+  `crtaddrcr2` text NOT NULL,
+  `remarks` text NOT NULL,
+  `report` text NOT NULL,
+  `source` text NOT NULL,
+  `location` text NOT NULL,
+  `cmpl_date` text NOT NULL,
+  `color_code` text NOT NULL,
+  `date` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `court-record-curr`
+--
+ALTER TABLE `court-record-curr`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `court-record-curr`
+--
+ALTER TABLE `court-record-curr`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+COMMIT;
+
+
+ALTER TABLE `applications`  ADD `pro_reference_3` TEXT NOT NULL  AFTER `pro_reference_2`;
+
+ALTER TABLE `court-record-curr`
+  RENAME TO court_record_curr
+
+ALTER TABLE `applications`  ADD `court_record_curr` TEXT NOT NULL  AFTER `criminal_court_record`;
+
+INSERT INTO `display_names` (`id`, `serv_oid`, `service_name`, `orig_serv`, `subservice_name`, `display_names`, `real_sub`, `inv_code`) VALUES (NULL, '42', 'pro-reference-3', 'Professional Reference-3', '', NULL, '', 'PR3');
+
+INSERT INTO `display_names` (`id`, `serv_oid`, `service_name`, `orig_serv`, `subservice_name`, `display_names`, `real_sub`, `inv_code`) VALUES (NULL, '45', 'court-record-curr', 'Court-record current', 'Court-record current', NULL, 'court_record_curr,', 'CRC');
+
+
+
+################## More filtered query of above April - 28 query is below (Use this for most recent and use above(april 28) query then filter it if any error happens) ############### 
+
+ALTER TABLE `serv_list` ADD `display_name` TEXT NULL DEFAULT NULL AFTER `subservice_name`;
+
+UPDATE `serv_list` SET `display_name` = 'ex-emp-hr-1,ex-emp-hr-2,ex-emp-hr-3,ex-emp-hr-4,ex-emp-hr-5,ex-emp-hr-6,' WHERE `serv_list`.`id` = 41; UPDATE `serv_list` SET `display_name` = 'permanent-address,current-address,' WHERE `serv_list`.`id` = 40; UPDATE `serv_list` SET `display_name` = 'post-graduation,graduation,12th-std,10th-std,diploma,' WHERE `serv_list`.`id` = 39; UPDATE `serv_list` SET `display_name` = 'pro-reference-1,pro-reference-2,' WHERE `serv_list`.`id` = 42; UPDATE `serv_list` SET `display_name` = 'insta-drug test,' WHERE `serv_list`.`id` = 43; UPDATE `serv_list` SET `display_name` = 'POLICE VERBAL,' WHERE `serv_list`.`id` = 44; UPDATE `serv_list` SET `display_name` = 'COURT-RECORD(PERM),' WHERE `serv_list`.`id` = 45; UPDATE `serv_list` SET `display_name` = 'criminal-database,' WHERE `serv_list`.`id` = 46; UPDATE `serv_list` SET `display_name` = 'CREDIT/CIBIL VERIFICATION,' WHERE `serv_list`.`id` = 47; UPDATE `serv_list` SET `display_name` = 'national-id-check,' WHERE `serv_list`.`id` = 48; UPDATE `serv_list` SET `display_name` = 'company-site-visit,' WHERE `serv_list`.`id` = 49;
+
+
+UPDATE `serv_list` SET `subservice_name` = 'pro-reference-1,pro-reference-2,pro-reference-3,', `display_name` = 'pro-reference-1,pro-reference-2,pro-reference-3,' WHERE `serv_list`.`id` = 42;
+
+UPDATE `serv_list` SET `subservice_name` = 'criminal-court-record,court-record-curr,', `display_name` = 'COURT-RECORD(PERM),COURT-RECORD(CURR),' WHERE `serv_list`.`id` = 45;
+
+-- phpMyAdmin SQL Dump
+-- version 5.0.2
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: Apr 30, 2021 at 05:25 PM
+-- Server version: 10.4.14-MariaDB
+-- PHP Version: 7.2.33
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+--
+-- Database: `goldquest`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `service_names`
+--
+
+CREATE TABLE `service_names` (
+  `id` tinyint(4) UNSIGNED NOT NULL,
+  `service_name` varchar(100) DEFAULT NULL,
+  `display_name` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `service_names`
+--
+
+INSERT INTO `service_names` (`id`, `service_name`, `display_name`) VALUES
+(1, 'emp-hr-1', 'ex-emp-hr-1'),
+(2, 'court-record-curr', 'COURT-RECORD(CURR)'),
+(3, 'pro-reference-3', 'pro-reference-3'),
+(4, 'pro-reference-2', 'pro-reference-2'),
+(5, 'criminal-court-record', 'COURT-RECORD(PERM)'),
+(6, 'pro-reference-1', 'pro-reference-1'),
+(7, 'company-site-visit', 'company-site-visit'),
+(8, 'national-id-check', 'national-id-check'),
+(9, 'credit-verification', 'CREDIT/CIBIL VERIFICATION'),
+(10, 'criminal-database', 'criminal-database'),
+(11, 'criminal-police-record', 'POLICE VERBAL'),
+(12, 'insta-drug-test', 'insta-drug test'),
+(13, 'diploma', 'diploma'),
+(14, '10th-std', '10th-std'),
+(15, '12th-std', '12th-std'),
+(16, 'graduation', 'graduation'),
+(17, 'post-graduation', 'post-graduation'),
+(18, 'current-address', 'current-address'),
+(19, 'permanent-address', 'permanent-address'),
+(20, 'emp-hr-6', 'ex-emp-hr-6'),
+(21, 'emp-hr-5', 'ex-emp-hr-5'),
+(22, 'emp-hr-4', 'ex-emp-hr-4'),
+(23, 'emp-hr-3', 'ex-emp-hr-3'),
+(24, 'emp-hr-2', 'ex-emp-hr-2');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `service_names`
+--
+ALTER TABLE `service_names`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `service_name_2` (`service_name`),
+  ADD KEY `service_name` (`service_name`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `service_names`
+--
+ALTER TABLE `service_names`
+  MODIFY `id` tinyint(4) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+COMMIT;
+
+INSERT INTO `bck_verification` (`id`, `service_name`, `appl_details`, `appl_shrt`, `report_details`, `report_shrt`) VALUES (NULL, 'pro-reference-3', 'reference name,contact details,verified by,association with subject,Applicants strong points,areas to improve,applicants key achievements,', 'rrfnmet,rcndtlst,rvbyt,raswsubt,rapsptt,rarimpt,rapkacht,', 'reference name,contact details,verified by,association with subject,Applicants strong points,areas to improve,applicants key achievements,', 'rrfnmet2,rcndtlst2,rvbyt2,raswsubt2,rapsptt2,rarimpt2,rapkacht2,');
+
+INSERT INTO `bck_verification` (`id`, `service_name`, `appl_details`, `appl_shrt`, `report_details`, `report_shrt`) VALUES (NULL, 'court-record-curr', 'reference number,candidate name,date of birth,father name,address1,', 'crtrefidcr,crtcdnmecr,crtdobcr,crtftnmecr,crtaddrcr,', 'reference number,candidate name,date of birth,father name,address1,', 'crtrefidcr2,crtcdnmecr2,crtdobcr2,crtftnmecr2,crtaddrcr2,');
+
+-- phpMyAdmin SQL Dump
+-- version 5.0.2
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: May 01, 2021 at 01:56 PM
+-- Server version: 10.4.14-MariaDB
+-- PHP Version: 7.2.33
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+--
+-- Database: `goldquest`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pro_reference_3`
+--
+
+CREATE TABLE `pro_reference_3` (
+  `id` int(11) NOT NULL,
+  `appl_id` text NOT NULL,
+  `client_uid` text NOT NULL,
+  `add_fe` text NOT NULL,
+  `rrfnmet` text NOT NULL,
+  `rcndtlst` text NOT NULL,
+  `rvbyt` text NOT NULL,
+  `raswsubt` text NOT NULL,
+  `rapsptt` text NOT NULL,
+  `rarimpt` text NOT NULL,
+  `rapkacht` text NOT NULL,
+  `rrfnmet2` text NOT NULL,
+  `rcndtlst2` text NOT NULL,
+  `rvbyt2` text NOT NULL,
+  `raswsubt2` text NOT NULL,
+  `rapsptt2` text NOT NULL,
+  `rarimpt2` text NOT NULL,
+  `rapkacht2` text NOT NULL,
+  `remarks` text NOT NULL,
+  `report` text NOT NULL,
+  `source` text NOT NULL,
+  `location` text NOT NULL,
+  `cmpl_date` text NOT NULL,
+  `color_code` text NOT NULL,
+  `date` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `pro_reference_3`
+--
+ALTER TABLE `pro_reference_3`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `pro_reference_3`
+--
+ALTER TABLE `pro_reference_3`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+COMMIT;
+
+-- phpMyAdmin SQL Dump
+-- version 5.0.2
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: May 01, 2021 at 02:01 PM
+-- Server version: 10.4.14-MariaDB
+-- PHP Version: 7.2.33
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+--
+-- Database: `goldquest`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `court-record-curr`
+--
+
+CREATE TABLE `court-record-curr` (
+  `id` int(11) NOT NULL,
+  `appl_id` text NOT NULL,
+  `client_uid` text NOT NULL,
+  `add_fe` text NOT NULL,
+  `crtrefidcr` text NOT NULL,
+  `crtcdnmecr` text NOT NULL,
+  `crtdobcr` text NOT NULL,
+  `crtftnmecr` text NOT NULL,
+  `crtaddrcr` text NOT NULL,
+  `crtrefidcr2` text NOT NULL,
+  `crtcdnmecr2` text NOT NULL,
+  `crtdobcr2` text NOT NULL,
+  `crtftnmecr2` text NOT NULL,
+  `crtaddrcr2` text NOT NULL,
+  `remarks` text NOT NULL,
+  `report` text NOT NULL,
+  `source` text NOT NULL,
+  `location` text NOT NULL,
+  `cmpl_date` text NOT NULL,
+  `color_code` text NOT NULL,
+  `date` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `court-record-curr`
+--
+ALTER TABLE `court-record-curr`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `court-record-curr`
+--
+ALTER TABLE `court-record-curr`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+COMMIT;
+
+
+ALTER TABLE `applications`  ADD `pro_reference_3` TEXT NOT NULL  AFTER `pro_reference_2`;
+
+ALTER TABLE `court-record-curr`
+  RENAME TO `court_record_curr`;
+
+ALTER TABLE `applications`  ADD `court_record_curr` TEXT NOT NULL  AFTER `criminal_court_record`;
+
+INSERT INTO `display_names` (`id`, `serv_oid`, `service_name`, `orig_serv`, `subservice_name`, `real_sub`, `inv_code`) VALUES (NULL, '42', 'pro-reference-3', 'Professional Reference-3', '', '', 'PR3');
+
+INSERT INTO `display_names` (`id`, `serv_oid`, `service_name`, `orig_serv`, `subservice_name`, `real_sub`, `inv_code`) VALUES (NULL, '45', 'court-record-curr', 'Court-record current', 'Court-record current', 'court_record_curr,', 'CRC');
+
+#####################---04/05/2021---####################
+
+ALTER TABLE `clent_details`  ADD `is_custom_logo` ENUM('no','yes','','') NOT NULL DEFAULT 'no'  AFTER `agrefile`,  ADD `custom_logo_path` TEXT NULL DEFAULT NULL  AFTER `is_custom_logo`;
+
+################---12/05/2021----#########
+
+ALTER TABLE `clent_details` CHANGE `is_custom_logo` `is_custom_temp` ENUM('no','yes','','') CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL DEFAULT 'no';
+
+
+ALTER TABLE `clent_details` ADD `custom_address` TEXT NOT NULL AFTER `custom_logo_path`;
+
+ALTER TABLE `clent_details` CHANGE `custom_address` `custom_address` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL;
+
+#######--------------18/05/2021----##############
+
+UPDATE `service_names` SET `display_name` = 'ex-emp hr-1' WHERE `service_names`.`id` = 1; UPDATE `service_names` SET `display_name` = 'COURT RECORD (C)' WHERE `service_names`.`id` = 2; UPDATE `service_names` SET `display_name` = 'pro reference-3' WHERE `service_names`.`id` = 3; UPDATE `service_names` SET `display_name` = 'pro reference-2' WHERE `service_names`.`id` = 4; UPDATE `service_names` SET `display_name` = 'Online COURT RECORD (P)' WHERE `service_names`.`id` = 5; UPDATE `service_names` SET `display_name` = 'pro reference-1' WHERE `service_names`.`id` = 6; UPDATE `service_names` SET `display_name` = 'company site visit' WHERE `service_names`.`id` = 7; UPDATE `service_names` SET `display_name` = 'national id check' WHERE `service_names`.`id` = 8; UPDATE `service_names` SET `display_name` = 'criminal database' WHERE `service_names`.`id` = 10; UPDATE `service_names` SET `display_name` = 'insta drug test' WHERE `service_names`.`id` = 12; UPDATE `service_names` SET `display_name` = 'Academic Reference' WHERE `service_names`.`id` = 13; UPDATE `service_names` SET `display_name` = 'PG' WHERE `service_names`.`id` = 17; UPDATE `service_names` SET `display_name` = 'current address' WHERE `service_names`.`id` = 18; UPDATE `service_names` SET `display_name` = 'permanent address' WHERE `service_names`.`id` = 19; UPDATE `service_names` SET `display_name` = 'ex-emp hr-6' WHERE `service_names`.`id` = 20; UPDATE `service_names` SET `display_name` = 'ex-emp hr-5' WHERE `service_names`.`id` = 21; UPDATE `service_names` SET `display_name` = 'ex-emp hr-4' WHERE `service_names`.`id` = 22; UPDATE `service_names` SET `display_name` = 'ex-emp hr-3' WHERE `service_names`.`id` = 23; UPDATE `service_names` SET `display_name` = 'ex-emp hr-2' WHERE `service_names`.`id` = 24;
+
+
+####---19-05-2021------#####
+UPDATE `bck_verification` SET `appl_details` = 'type of id card,idendity number,date of verification,verificaton result,verified by,', `report_details` = 'type of id card,idendity number,date of verification,verificaton result,verified by,' WHERE `bck_verification`.`id` = 48;
+
+ALTER TABLE `applic_entry` ADD `is_quality_verified` ENUM('no','yes') NOT NULL DEFAULT 'no' AFTER `date`;
+
+#####---21-05-2021---######
+
+
+ALTER TABLE `applic_entry` ADD `pa_full_address` TEXT NULL DEFAULT NULL AFTER `rmrks`, ADD `pa_pos_from` TEXT NULL DEFAULT NULL AFTER `pa_full_address`, ADD `pa_pos_to` TEXT NULL DEFAULT NULL AFTER `pa_pos_from`, ADD `pa_landmark` TEXT NULL DEFAULT NULL AFTER `pa_pos_to`, ADD `pa_residence_mobile_no` VARCHAR(15) NULL DEFAULT NULL AFTER `pa_landmark`, ADD `pa_state` VARCHAR(100) NULL DEFAULT NULL AFTER `pa_residence_mobile_no`, ADD `pa_court_address` TEXT NULL DEFAULT NULL AFTER `pa_state`, ADD `ca_full_address` TEXT NULL DEFAULT NULL AFTER `pa_court_address`, ADD `ca_landmark` TEXT NULL DEFAULT NULL AFTER `ca_full_address`, ADD `ca_residence_mobile_no` VARCHAR(15) NULL DEFAULT NULL AFTER `ca_landmark`, ADD `ca_state` VARCHAR(100) NULL DEFAULT NULL AFTER `ca_residence_mobile_no`, ADD `ca_court_address` TEXT NULL DEFAULT NULL AFTER `ca_state`;
+
+ALTER TABLE `applic_entry` ADD INDEX(`gqg_ref_id`);
+
+ALTER TABLE `applic_entry` ADD `case_rcvd_month` VARCHAR(25) NOT NULL DEFAULT '' AFTER `case_rv_dt`;
+
+##LATEST - May 26 -##
+
+UPDATE `service_names` SET `display_name` = 'ACADEMIC REFERENCE' WHERE `service_names`.`id` = 3;
+UPDATE `service_names` SET `display_name` = 'CREDIT/CIBIL CHECK' WHERE `service_names`.`id` = 9;
+UPDATE `service_names` SET `service_name` = 'national-id-check-1', `display_name` = 'national id check 1' WHERE `service_names`.`id` = 8;
+NSERT INTO `service_names` (`id`, `service_name`, `display_name`) VALUES (NULL, 'national-id-check-2', 'national id check 2');
+ALTER TABLE `applications` CHANGE `national_id_check` `national_id_check_1` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL;
+
+ALTER TABLE `applications` ADD `national_id_check_2` TEXT NOT NULL AFTER `national_id_check_1`;
+UPDATE `bck_verification` SET `service_name` = 'national-id-check-1' WHERE `bck_verification`.`id` = 48;
+INSERT INTO `bck_verification` (`id`, `service_name`, `appl_details`, `appl_shrt`, `report_details`, `report_shrt`) VALUES (NULL, 'national-id-check-2', 'type of id card,idendity number,date of verification,verificaton result,verified by,', 'nttyid2,ntidcrd2,ntdovery2,ntvrresul2,ntverby2,', 'type of id card,idendity number,date of verification,verificaton result,verified by,', 'nttyid2_2,ntidcrd2_2,ntdovery2_2,ntvrresul2_2,ntverby2_2,'), (NULL, '', '', '', '', '');
+
+UPDATE `serv_list` SET `subservice_name` = 'national-id-check-1,national-id-check-2,', `display_name` = 'national-id-check-1,national-id-check-2,' WHERE `serv_list`.`id` = 48;
+ALTER TABLE national_id_check RENAME TO national_id_check_1;
+
+ALTER TABLE `national_id_check_2` CHANGE `nttyid` `nttyid2` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL, CHANGE `ntidcrd` `ntidcrd2` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL, CHANGE `ntdovery` `ntdovery2` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL, CHANGE `ntvrresul` `ntvrresul2` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL, CHANGE `ntverby` `ntverby2` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL, CHANGE `nttyid2` `nttyid2_2` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL, CHANGE `ntidcrd2` `ntidcrd2_2` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL, CHANGE `ntdovery2` `ntdovery2_2` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL, CHANGE `ntvrresul2` `ntvrresul2_2` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL, CHANGE `ntverby2` `ntverby2_2` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL;
+
+UPDATE `display_names` SET `service_name` = 'national-id-check-1', `orig_serv` = 'National ID Check 1', `subservice_name` = 'National ID Check 1,', `real_sub` = 'national_id_check_1,', `inv_code` = 'NID1' WHERE `display_names`.`id` = 48;
+
+INSERT INTO `display_names` (`id`, `serv_oid`, `service_name`, `orig_serv`, `subservice_name`, `display_names`, `real_sub`, `inv_code`) VALUES (NULL, '48', 'national-id-check-2', 'National ID Check 2', 'National ID Check 2,', NULL, 'national_id_check_2,', 'NID2');

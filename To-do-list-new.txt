@@ -1,0 +1,84 @@
+Custom Address in report template - Add client - done
+
+Remove GQG Reference ID in email body - Acknowledgement email -done
+
+Remove calendar for DOB in masterchecker, also not mandatory -done
+
+Report status,report type, final verification status not mandatory - done
+
+Remove - from service names - done
+
+Rename Pot graduation to PG -done
+
+Rename Diploma to Academic Reference - done
+
+Rename COURT-RECORD(PERM) to Online COURT RECORD (P) - done
+
+Rename COURT-RECORD(CURR) to Online COURT RECORD (C) - done
+
+Mail function in candidate dropbox not working - its already working
+
+Once the creating application done from candidate side, an email notification should send to the admin - done
+
+Necessary docs can be added even after creating the application for the candidate from client dropbox -done
+
+Remove Use only for Insufficiency Document Attachment: in client dropbox -done
+
+Success notification after submiting form in candidate form page -done
+
+Rename Id Card Number: in Naional ID check form to Idendity number - done
+
+Correct spelling mistake - Id Card Number: ???
+
+In report rename ANNEXURE - 3 (a) to ANNEXURE - 3 (A) - done
+ 
+
+ Is verified by quality team?*: Mail shoud go to quality team first, once the status changed to yes, then only email should go to client - done
+
+ Make the Is verified by quality team?* more visible - done
+
+ --Excel tracker --
+
+ - Use the template shared through email - done
+ - User should be able to generate the excel by overall status(WIP, INSUFF, COMPLETED) along with total count - done
+
+ All data in masterchecker should reflect in excel tracker - done
+
+ Add permanent addrees, current address as new inputs in master checker - done
+
+ Add missing inputs from excel template in application page - done
+
+ Invoice Generation - Generate only completed(ovrall status) invoice - Already implemented
+
+ Report - Logo and verified image should seems like same in size - done
+
+Change the footer address in report - done
+
+No 293/154/172, IndiQube Gamma, 4th Floor, Outer Ring Road, Kadubeesanahalli, Marathahalli
+Bangalore-560103 | www.goldquestglobal.in
+
+Replace verified image to footer, Add iso logo to header in report
+
+Align left TH(Application details..etc) in report - done
+
+Minimize the space between End of Summary Report and the next table in report - need to verify
+
+Increase the size of the color reference table in report - need to verify
+
+Add logo color blue to the outer border of the first table in report -done
+
+Increase the size of the footer address in report - need to check
+
+Keep unique border in every table in report - done
+
+Keep caps only for starting letter in whole the report - done
+
+Color picker in master checker - done
+
+Check CC emails - Add client - done
+
+Unblock inactive client list not working - done
+
+Annexure image enlarged issue in final report - done
+
+Blocked client are hidden from showing in client login credentials - done
